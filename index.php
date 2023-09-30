@@ -20,16 +20,6 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="css/stripe.css">
     
-
-
-    <?php
-    session_start();
-    $accion = $_REQUEST['accion'] ?? '';
-    if ($accion == 'cerrar') {
-        session_destroy();
-        header("Refresh:0");
-    }
-    ?>
 </head>
 
 <body>
