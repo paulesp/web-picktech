@@ -35,7 +35,6 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
                 <?php
-                ob_flush();
                 if (isset($_REQUEST['login'])) {
                     $email = $_REQUEST['email'] ?? '';
                     $pasword = $_REQUEST['pass'] ?? '';
@@ -85,7 +84,9 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
+                <?php
+                    ob_flush();
+                ?>
                 <!-- /.login-card-body -->
             </div>
         </div>
