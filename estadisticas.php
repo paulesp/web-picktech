@@ -1,6 +1,6 @@
 <?php
 include_once "db_picktech.php";
-$con = mysqli_connect($host, $user, $pass, $db);
+$con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
 
 $queryNumVentas = "SELECT COUNT(id) AS num from ventas 
 where fecha BETWEEN DATE( DATE_SUB(NOW(),INTERVAL 7 DAY) ) AND NOW(); ";
