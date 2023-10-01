@@ -54,6 +54,7 @@
                         <?php
                     }
                 }
+                    ob_flush();
                 ?>
                 <form method="post">
                     <div class="input-group mb-3">
