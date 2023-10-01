@@ -16,7 +16,7 @@ sum(detalleventa.subTotal) as total,
 ventas.fecha
 FROM
 ventas
-INNER JOIN detalleVenta ON detalleventa.idVenta = ventas.id
+INNER JOIN detalleventa ON detalleventa.idVenta = ventas.id
 GROUP BY DAY(ventas.fecha);";
 $resVentasDia = mysqli_query($con, $queryVentasDia);
 $labelVentas = "";
