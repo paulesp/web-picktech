@@ -31,6 +31,8 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
                 <?php
+                    session_start();
+                    ob_flush();
                 if (isset($_REQUEST['login'])) {
                     $email = $_REQUEST['email'] ?? '';
                     $pasword = $_REQUEST['pass'] ?? '';
@@ -44,8 +46,6 @@
                         $_SESSION['idCliente'] = $row['id'];
                         $_SESSION['emailCliente'] = $row['email'];
                         $_SESSION['nombreCliente'] = $row['nombre'];
-                        session_start();
-                        ob_flush();
                         header('Location: index.php?mensaje=Usuario registrado exitosamente');
                     } else {
                         ?>
