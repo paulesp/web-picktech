@@ -35,7 +35,7 @@
     $pasword = $_REQUEST['pass'] ?? '';
     $pasword = md5($pasword);
     include_once "db_picktech.php";
-    $con = mysqli_connect($host, $user, $pass, $db);
+    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
     $query="SELECT id,email,nombre from usuarios where email='" . $email . "' and pass='" . $pasword . "';  ";
     $res = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($res);
