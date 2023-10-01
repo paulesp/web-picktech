@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <?php
+<?php
     session_start();
     session_regenerate_id(true);
     if(isset ($_REQUEST['sesion']) && $_REQUEST['sesion']=="cerrar"){
@@ -11,7 +9,47 @@
       header("Location: index.php");
     }
     $modulo=$_REQUEST['modulo']??'';
-  ?>
+?>
+
+<?php 
+  if(isset($_REQUEST['mensaje'])){
+?>
+    <div class="alert alert-primary alert-dismissible fade show float-right" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+<?php 
+    echo $_REQUEST['mensaje'] 
+?>
+    </div>
+<?php
+  }
+  if($modulo=="estadisticas" || $modulo==""){
+     include_once "estadisticas.php";
+  }
+  if($modulo=="usuarios"){
+    include_once "usuarios.php";
+ }
+ if($modulo=="productos"){
+  include_once "productos.php";
+  }
+  if($modulo=="ventas"){
+  include_once "ventas.php";
+  }
+  if($modulo=="crearUsuario"){
+    include_once "crearUsuario.php";
+  }
+  if($modulo=="editarUsuario"){
+    include_once "editarUsuario.php";
+  }
+  if($modulo=="productos"){
+    include_once "productos.php";
+  }
+?>
+
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,40 +187,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-<?php 
-  if(isset($_REQUEST['mensaje'])){
-    ?>
-    <div class="alert alert-primary alert-dismissible fade show float-right" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">Close</span>
-      </button>
-      <?php echo $_REQUEST['mensaje'] ?>
-    </div>
-    <?php
-  }
-  if($modulo=="estadisticas" || $modulo==""){
-     include_once "estadisticas.php";
-  }
-  if($modulo=="usuarios"){
-    include_once "usuarios.php";
- }
- if($modulo=="productos"){
-  include_once "productos.php";
-  }
-  if($modulo=="ventas"){
-  include_once "ventas.php";
-  }
-  if($modulo=="crearUsuario"){
-    include_once "crearUsuario.php";
-  }
-  if($modulo=="editarUsuario"){
-    include_once "editarUsuario.php";
-  }
-  if($modulo=="productos"){
-    include_once "productos.php";
-  }
-?>
+
 </div>
 <!-- ./wrapper -->
 
