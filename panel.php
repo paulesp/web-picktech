@@ -43,9 +43,6 @@
   if($modulo=="editarUsuario"){
     include_once "editarUsuario.php";
   }
-  if($modulo=="productos"){
-    include_once "productos.php";
-  }
 ?>
 
 <!DOCTYPE html>
