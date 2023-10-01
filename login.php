@@ -44,7 +44,7 @@
                         $_SESSION['idCliente'] = $row['id'];
                         $_SESSION['emailCliente'] = $row['email'];
                         $_SESSION['nombreCliente'] = $row['nombre'];
-                        header("location: index.php?mensaje=Usuario registrado exitosamente");
+                        header('Location: index.php?mensaje=Usuario registrado exitosamente');
                     } else {
                         ?>
                         <div class="alert alert-danger" role="alert">
