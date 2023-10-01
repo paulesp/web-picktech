@@ -22,7 +22,7 @@ use
 	DataTables\Editor\ValidateOptions;
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'todo' )
+Editor::inst( $DB_NAME, 'todo' )
 	->fields(
 		Field::inst( 'item' ),
 		Field::inst( 'done' ),
