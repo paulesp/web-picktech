@@ -1,6 +1,31 @@
 <?php
-    session_start();
+session_start();
 ?>
+<?php
+    if (isset($_REQUEST['login'])) {
+        $email = $_REQUEST['email'] ?? '';
+        $pasword = $_REQUEST['pass'] ?? '';
+        $pasword = md5($pasword);
+        include_once "db_picktech.php";
+        $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
+        $query = "SELECT id,email,nombre from clientes where email='" . $email . "' and pass='" . $pasword . "';  ";
+        $res = mysqli_query($con, $query);
+        $row = mysqli_fetch_assoc($res);
+        if ($row) {
+            $_SESSION['idCliente'] = $row['id'];
+            $_SESSION['emailCliente'] = $row['email'];
+            $_SESSION['nombreCliente'] = $row['nombre'];
+            header("location: index.php?mensaje=Usuario registrado exitosamente");
+            } else {
+?>
+                        <div class="alert alert-danger" role="alert">
+                            Error de login
+                        </div>
+<?php
+                    }
+                }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -33,30 +58,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
-<?php
-    if (isset($_REQUEST['login'])) {
-        $email = $_REQUEST['email'] ?? '';
-        $pasword = $_REQUEST['pass'] ?? '';
-        $pasword = md5($pasword);
-        include_once "db_picktech.php";
-        $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
-        $query = "SELECT id,email,nombre from clientes where email='" . $email . "' and pass='" . $pasword . "';  ";
-        $res = mysqli_query($con, $query);
-        $row = mysqli_fetch_assoc($res);
-        if ($row) {
-            $_SESSION['idCliente'] = $row['id'];
-            $_SESSION['emailCliente'] = $row['email'];
-            $_SESSION['nombreCliente'] = $row['nombre'];
-            header("location: index.php?mensaje=Usuario registrado exitosamente");
-            } else {
-?>
-                        <div class="alert alert-danger" role="alert">
-                            Error de login
-                        </div>
-<?php
-                    }
-                }
-?>
+
     <form method="post">
         <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="Email" name="email">
