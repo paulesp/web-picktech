@@ -54,8 +54,8 @@
                 if( $modulo=="factura" ){
                     include_once "factura.php";
                 }
-                if( $modulo=="about"){
-                    include_once "about.php";
+                if( $modulo=="about" ){
+                    include_once "About.php";
                 }
                 ?>
             </div>
