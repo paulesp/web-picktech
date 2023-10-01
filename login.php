@@ -41,6 +41,7 @@
                         $_SESSION['idCliente'] = $row['id'];
                         $_SESSION['emailCliente'] = $row['email'];
                         $_SESSION['nombreCliente'] = $row['nombre'];
+                        ob_start();
                         header('Location: index.php?mensaje=Usuario registrado exitosamente');
                     } else {
                         ?>
