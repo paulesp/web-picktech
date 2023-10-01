@@ -19,7 +19,7 @@ use
 	DataTables\Editor\ValidateOptions;
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'productos' )
+Editor::inst( $DB_NAME, 'productos' )
 	->fields(
 		Field::inst( 'nombre' )
 			->validator( Validate::notEmpty( ValidateOptions::inst()
@@ -38,7 +38,7 @@ Editor::inst( $db, 'productos' )
             ->link( 'files.id', 'productos_files.file_id' )
             ->fields(
                 Field::inst( 'id' )
-		    ->upload( Upload::inst( getUploadPath('uploads/__ID__.__EXTN__') ) );
+		    ->upload( Upload::inst( $SERVER['DOCUMENT_ROOT'].'/uploads/ID.EXTN_' )
                         ->db( 'files', 'id', array(
                             'filename'    => Upload::DB_FILE_NAME,
                             'filesize'    => Upload::DB_FILE_SIZE,
