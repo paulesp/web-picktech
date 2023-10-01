@@ -33,57 +33,55 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
-                <?php
-                ob_start();
-                if (isset($_REQUEST['login'])) {
-                    $email = $_REQUEST['email'] ?? '';
-                    $pasword = $_REQUEST['pass'] ?? '';
-                    $pasword = md5($pasword);
-                    include_once "db_picktech.php";
-                    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
-                    $query = "SELECT id,email,nombre from clientes where email='" . $email . "' and pass='" . $pasword . "';  ";
-                    $res = mysqli_query($con, $query);
-                    $row = mysqli_fetch_assoc($res);
-                    if ($row) {
-                        $_SESSION['idCliente'] = $row['id'];
-                        $_SESSION['emailCliente'] = $row['email'];
-                        $_SESSION['nombreCliente'] = $row['nombre'];
-                        header("location: index.php?mensaje=Usuario registrado exitosamente");
-                    } else {
-                        ?>
+<?php
+    if (isset($_REQUEST['login'])) {
+        $email = $_REQUEST['email'] ?? '';
+        $pasword = $_REQUEST['pass'] ?? '';
+        $pasword = md5($pasword);
+        include_once "db_picktech.php";
+        $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
+        $query = "SELECT id,email,nombre from clientes where email='" . $email . "' and pass='" . $pasword . "';  ";
+        $res = mysqli_query($con, $query);
+        $row = mysqli_fetch_assoc($res);
+        if ($row) {
+            $_SESSION['idCliente'] = $row['id'];
+            $_SESSION['emailCliente'] = $row['email'];
+            $_SESSION['nombreCliente'] = $row['nombre'];
+            header("location: index.php?mensaje=Usuario registrado exitosamente");
+            } else {
+?>
                         <div class="alert alert-danger" role="alert">
                             Error de login
                         </div>
-                        <?php
+<?php
                     }
                 }
-                ob_flush();
-                ?>
-                <form method="post">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
+?>
+    <form method="post">
+        <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" name="email">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password" name="pass">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="pass">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                </div>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" name="login">Loguearse</button>
+                        <a href="registro.php" class="text-success float-right">Registrarse</a>
                     </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary" name="login">Loguearse</button>
-                            <a href="registro.php" class="text-success float-right">Registrarse</a>
-                        </div>
-                        <!-- /.col -->
-                    </div>
+                    <!-- /.col -->
+                </div>
                 </form>
                 <!-- /.login-card-body -->
             </div>
