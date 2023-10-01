@@ -1,6 +1,6 @@
 <?php 
 include_once "db_picktech.php";
-$con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_POR);
+$con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
 ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
