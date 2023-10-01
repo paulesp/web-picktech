@@ -31,8 +31,8 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
                 <?php
-                    session_start();
                 if (isset($_REQUEST['login'])) {
+                    session_start();
                     $email = $_REQUEST['email'] ?? '';
                     $pasword = $_REQUEST['pass'] ?? '';
                     $pasword = md5($pasword);
