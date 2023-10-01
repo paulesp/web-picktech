@@ -34,6 +34,7 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Logueate</p>
                 <?php
+                ob_start();
                 if (isset($_REQUEST['login'])) {
                     $email = $_REQUEST['email'] ?? '';
                     $pasword = $_REQUEST['pass'] ?? '';
@@ -56,6 +57,7 @@
                         <?php
                     }
                 }
+                ob_flush();
                 ?>
                 <form method="post">
                     <div class="input-group mb-3">
