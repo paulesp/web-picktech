@@ -28,7 +28,7 @@
 
     <?php
     include_once "db_picktech.php";
-    $con = mysqli_connect("$DB_HOST","$DB_USER","$DB_PASSWORD","$DB_NAME","$DB_PORT");
+    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
     ?>
     <div class="container">
         <div class="row">
