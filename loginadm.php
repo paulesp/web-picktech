@@ -1,6 +1,31 @@
 <?php 
   session_start();
 ?>
+<?php 
+  if (isset($_REQUEST['login'])) {
+    $email = $_REQUEST['email'] ?? '';
+    $pasword = $_REQUEST['pass'] ?? '';
+    $pasword = md5($pasword);
+    include_once "db_picktech.php";
+    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
+    $query="SELECT id,email,nombre from usuarios where email='" . $email . "' and pass='" . $pasword . "';  ";
+    $res = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($res);
+    if($row){
+      $_SESSION['id'] = $row['id'];
+      $_SESSION['email'] = $row['email'];
+      $_SESSION['nombre'] = $row['nombre'];
+      header("location: panel.php");
+    }
+    else{
+?>
+      <div class="alert alert-danger" role="alert">
+        Error de Login
+      </div>
+<?php
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,32 +56,7 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ha entrado a modo Administrador</p>
-<?php 
-  if (isset($_REQUEST['login'])) {
-    $email = $_REQUEST['email'] ?? '';
-    $pasword = $_REQUEST['pass'] ?? '';
-    $pasword = md5($pasword);
-    include_once "db_picktech.php";
-    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
-    $query="SELECT id,email,nombre from usuarios where email='" . $email . "' and pass='" . $pasword . "';  ";
-    $res = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($res);
-    if($row){
-      $_SESSION['id'] = $row['id'];
-      $_SESSION['email'] = $row['email'];
-      $_SESSION['nombre'] = $row['nombre'];
-      ob_start();
-      header("location: panel.php");
-    }
-    else{
-?>
-      <div class="alert alert-danger" role="alert">
-        Error de Login
-      </div>
-<?php
-    }
-  }
-?>
+
       <form method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
