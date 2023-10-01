@@ -19,7 +19,7 @@ use
 	DataTables\Editor\ValidateOptions;
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'users' )
+Editor::inst( $DB_NAME, 'users' )
 	->fields(
 		Field::inst( 'users.first_name' ),
 		Field::inst( 'users.last_name' ),
