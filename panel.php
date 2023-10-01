@@ -30,8 +30,8 @@
   }
   if($modulo=="usuarios"){
     include_once "usuarios.php";
- }
- if($modulo=="productos"){
+  }
+  if($modulo=="productos"){
   include_once "productos.php";
   }
   if($modulo=="ventas"){
