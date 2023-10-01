@@ -45,6 +45,7 @@
       $_SESSION['id'] = $row['id'];
       $_SESSION['email'] = $row['email'];
       $_SESSION['nombre'] = $row['nombre'];
+      ob_start();
       header("location: panel.php");
     }
     else{
