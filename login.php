@@ -51,7 +51,6 @@
                         <div class="alert alert-danger" role="alert">
                             Error de login
                         </div>
-                        ob_flush();
                         <?php
                     }
                 }
@@ -96,4 +95,7 @@
         <script src="dist/js/adminlte.min.js"></script>
 
 </body>
+<?php
+    ob_flush();
+?>
 
