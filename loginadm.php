@@ -1,4 +1,4 @@
-<php 
+<?php 
   session_start();
 ?>
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
 <?php
     }
   }
-  ?>
+?>
       <form method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
