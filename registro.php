@@ -1,3 +1,29 @@
+<?php
+if (isset($_REQUEST['registro'])) {
+session_start();
+$email = $_REQUEST['email'] ?? '';
+$nombre = $_REQUEST['nombre'] ?? '';
+$pasword = $_REQUEST['pass'] ?? '';
+$pasword = md5($pasword);
+include_once "db_picktech.php";
+$con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
+$query = "INSERT into clientes (nombre,email,pass) values ('$nombre','$email','$pasword')";
+$res = mysqli_query($con, $query);
+if ($res) {
+?>
+    <div class="alert alert-primary" role="alert">
+        <strong>Registro exitosos</strong> <a href="login.php">Ir a login</a>
+    </div>
+<?php
+    } else {
+?>
+    <div class="alert alert-danger" role="alert">
+        Error de registro
+    </div>
+<?php
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,32 +55,6 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Registrate</p>
-                <?php
-                if (isset($_REQUEST['registro'])) {
-                    session_start();
-                    $email = $_REQUEST['email'] ?? '';
-                    $nombre = $_REQUEST['nombre'] ?? '';
-                    $pasword = $_REQUEST['pass'] ?? '';
-                    $pasword = md5($pasword);
-                    include_once "db_picktech.php";
-                    $con = mysqli_connect($host, $user, $pass, $db);
-                    $query = "INSERT into clientes (nombre,email,pass) values ('$nombre','$email','$pasword')";
-                    $res = mysqli_query($con, $query);
-                    if ($res) {
-                        ?>
-                        <div class="alert alert-primary" role="alert">
-                            <strong>Registro exitosos</strong> <a href="login.php">Ir a login</a>
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="alert alert-danger" role="alert">
-                            Error de registro
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
                 <form method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Nombre" name="nombre">
