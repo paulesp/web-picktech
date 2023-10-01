@@ -30,7 +30,6 @@
       <p class="login-box-msg">Ha entrado a modo Administrador</p>
 <?php 
   if (isset($_REQUEST['login'])) {
-    session_start();
     $email = $_REQUEST['email'] ?? '';
     $pasword = $_REQUEST['pass'] ?? '';
     $pasword = md5($pasword);
