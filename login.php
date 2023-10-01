@@ -32,7 +32,6 @@
                 <p class="login-box-msg">Logueate</p>
                 <?php
                     session_start();
-                    ob_flush();
                 if (isset($_REQUEST['login'])) {
                     $email = $_REQUEST['email'] ?? '';
                     $pasword = $_REQUEST['pass'] ?? '';
@@ -52,6 +51,7 @@
                         <div class="alert alert-danger" role="alert">
                             Error de login
                         </div>
+                        ob_flush();
                         <?php
                     }
                 }
