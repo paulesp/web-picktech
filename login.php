@@ -1,3 +1,6 @@
+<?php
+    ob_start();
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,8 +44,9 @@
                         $_SESSION['idCliente'] = $row['id'];
                         $_SESSION['emailCliente'] = $row['email'];
                         $_SESSION['nombreCliente'] = $row['nombre'];
-                        ob_start();
-                        exit(header('Location: index.php?mensaje=Usuario registrado exitosamente'));
+                        session_start();
+                        ob_flush();
+                        header('Location: index.php?mensaje=Usuario registrado exitosamente');
                     } else {
                         ?>
                         <div class="alert alert-danger" role="alert">
