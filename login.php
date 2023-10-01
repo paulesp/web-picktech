@@ -1,6 +1,5 @@
 <?php
     session_start();
-    ob_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,9 +83,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <?php
-                    ob_flush();
-                ?>
                 <!-- /.login-card-body -->
             </div>
         </div>
