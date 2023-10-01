@@ -20,7 +20,7 @@ use
 
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'users' )
+Editor::inst( $DB_NAME, 'users' )
 	->fields(
 		Field::inst( 'first_name' ),
 		Field::inst( 'last_name' ),
