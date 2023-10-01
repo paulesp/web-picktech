@@ -18,7 +18,7 @@ if ( ! isset($_POST['site']) || ! is_numeric($_POST['site']) ) {
     echo json_encode( [ "data" => [] ] );
 }
 else {
-    Editor::inst( $db, 'users' )
+    Editor::inst( $DB_NAME, 'users' )
         ->field(
             Field::inst( 'users.first_name' ),
             Field::inst( 'users.last_name' ),
