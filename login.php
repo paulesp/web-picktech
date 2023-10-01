@@ -42,7 +42,7 @@
                         $_SESSION['emailCliente'] = $row['email'];
                         $_SESSION['nombreCliente'] = $row['nombre'];
                         ob_start();
-                        header('Location: index.php?mensaje=Usuario registrado exitosamente');
+                        exit(header('Location: index.php?mensaje=Usuario registrado exitosamente'));
                     } else {
                         ?>
                         <div class="alert alert-danger" role="alert">
