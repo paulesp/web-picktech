@@ -96,7 +96,4 @@
         <script src="dist/js/adminlte.min.js"></script>
 
 </body>
-<?php
-    ob_flush();
-?>
 
