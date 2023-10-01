@@ -1,7 +1,7 @@
 <?php
 if (isset($_REQUEST['guardar'])) {
     include_once "db_picktech.php";
-    $con = mysqli_connect($host, $user, $pass, $db);
+    $con = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME,$DB_PORT);
 
     $email = mysqli_real_escape_string($con, $_REQUEST['email'] ?? '');
     $pass = md5(mysqli_real_escape_string($con, $_REQUEST['pass'] ?? ''));
