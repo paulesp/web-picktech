@@ -38,7 +38,7 @@ Editor::inst( $DB_NAME, 'productos' )
             ->link( 'files.id', 'productos_files.file_id' )
             ->fields(
                 Field::inst( 'id' )
-		    ->upload( Upload::inst( $SERVER['DOCUMENT_ROOT'].'/uploads/ID.EXTN_' )
+		    ->upload( Upload::inst( 'https://github.com/paulesp/web-picktech/tree/main/uploads/ID.EXTN_' )
                         ->db( 'files', 'id', array(
                             'filename'    => Upload::DB_FILE_NAME,
                             'filesize'    => Upload::DB_FILE_SIZE,
